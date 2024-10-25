@@ -6,6 +6,20 @@ if {blue_first} == true:
 	Blue: And I guess my idle animation and hair help reinforce that. Or whatever.
 	Blue: ...
 	Blue: I dropped my ice cream cone earlier...
+	if {red_first} == true and {yellow_first} == false and {grey_first} == false:
+		Blue: I saw you talk to everyone else first. You haven't even looked for Red.
+		Blue: He's up in a tree. He was planning on jumping when everyone started looking around for him, but that was a while ago.
+		Blue: Between you and me, I think he's just trying to get Grey's approval. It's a salacious rumor, but they say Grey's Red's father.
+		Blue: My life's sad and all, but I wouldn't trade it out if I had to have Grey as my dad. I heard he sniffs cow butts.
+		[wait time="1.0"]
+		join Grey right
+		Grey: I told you that in confidence! We had a moment, Blue. Did that mean nothing?!
+		[wait time="1.0"]
+		join Yellow center
+		Yellow: YOOOO, Grey sniffs cow butts? No. Way.
+		Yellow: Hey Red! You gotta hear this hot goss on Grey. Dude likes to smell cow farts!
+		set {red_first} = false
+		[signal arg="redfall"]
 	leave Blue [animation="Fade Out"]
 else:
 	join Blue rightmost [animation="Fade In"]

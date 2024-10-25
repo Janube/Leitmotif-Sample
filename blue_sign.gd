@@ -20,4 +20,5 @@ func _on_hitbox_body_exited(body):
 			ui_label.despawn()
 
 func talking():
-	ui_label.despawn()
+	if is_instance_valid(ui_label):
+		ui_label.despawn()

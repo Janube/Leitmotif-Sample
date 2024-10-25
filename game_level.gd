@@ -16,6 +16,8 @@ extends Node2D
 
 func ready():
 	await get_tree().create_timer(1.0).timeout
+	Dialogic.signal_event.connect(_on_dialogic_signal)
+	
 	
 func _process(_delta):
 	pass
@@ -109,7 +111,7 @@ func grey_event():
 		grey_tween.parallel().tween_property(grey,"position:x", $"CAT!".global_position.x + 50, 2)
 		#yellow.position += ($"CAT!".global_position - yellow.position).normalized()
 		#yellow_tween.tween_property(yellow,"position", $"CAT!".global_position + Vector2(40,0), 4)
-		await get_tree().create_timer(3.7).timeout
+		await get_tree().create_timer(4.5).timeout
 		grey.done_spawning()
 	Dialogic.start("Grey")
 	grey_spawn = true
@@ -135,4 +137,15 @@ func ost():
 	$Default.volume_db = -60
 	$Default.play()
 	default_tween.tween_property($Default,"volume_db", -20, 1)
-	#start = false
+
+
+func _on_dialogic_signal(argument:String):
+	print("string read")
+	if argument == "redfall":
+		var red = red_scene.instantiate()
+		get_parent().add_child(red)
+		red.position.x = $"CAT!".global_position.x - 40
+		red.position.y = $"CAT!".global_position.y - 320
+		await get_tree().create_timer(4).timeout
+		red_spawn = true
+		

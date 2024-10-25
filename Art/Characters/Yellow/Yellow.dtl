@@ -2,8 +2,18 @@ if {yellow_first} == true:
 	join Yellow center [animation="Slide In Right" length="2.0"]
 	[wait time="1.3"]
 	Yellow: Hey! I'm Yellow!
-	Yellow: Don't mind Red and Blue. Red's a bit intense, and Blue's stuck in his own head. But that's just what makes them who they are, y'know?
-	Yellow: My song's optimistic and energetic. But it's not aggressive! I'm all about being peppy and cheery! Not everyone can be like *Grey*. That guy's a real wangus, if you know what I mean.
+	if {blue_first} and {red_first} == false:
+		Yellow: Don't mind those two. Red's a bit intense, and Blue's stuck in his own head. But that's just what makes them who they are, y'know?
+		Yellow: My song's optimistic and energetic. But it's not aggressive! I'm all about being cheery and outgoing!
+		Yellow: Not everyone can be like *Grey*. That guy's a real wangus. You'll know when you meet him.
+	else:
+		Yellow: Wait, did you come see me before Red and Blue? That's so nice! You must really like me.
+		Yellow: But just so you know, I'm spoken for. I'm dating Grey's daughter. Heh.
+		if {grey_first} == false:
+			join Grey right
+			Grey: YOU WHAT.
+			[wait time="1.0"]
+			Yellow: Heh.
 else:
 	join Yellow center [animation="Fade In"]
 	Yellow: Oh hey, you're back! How're you doin, buddy?

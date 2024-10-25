@@ -2,7 +2,27 @@ if {red_first} == true:
 	join Red left [animation="Slide In Down" length="1.5"]
 	[wait time="1.0"]
 	Red: I'm Red!
-	Red: I act before I think! I'm flashy and my theme is a little aggressive. My visual design and my song let you know I'm a fighter. My dialogue does too because I'm direct and in your face, ya nerd!
+	Red: I act before I think! I'm flashy and my theme is a little aggressive.
+	Red: My visual design and my song let you know I'm a fighter. My dialogue does too because I'm direct and in your face, ya nerd!
+	if {blue_first} == false:
+		Red: Hold up, did you seriously go see Blue before me?\
+\
+BLUE?
+		[wait time="1.0"]
+		join Blue rightmost
+		Blue: Sorry, Red. I think I unlocked some kind of eldritch pity magic. 
+		if {grey_first} == false:
+			Blue: Even Grey came over and asked me if I was doing okay. It was nice of him.
+			[wait time="1.0"]
+			Red: HOLD UP. You saw GREY before me?!\
+\
+I'll kill him!
+			[wait time="1.0"]
+			join Grey right
+			Grey: Sure you will, bud. Don't think I haven't seen you practicing that superhero landing all day. 
+			Grey: I bet you couldn't even turn around right now. I bet some lazy-ass programmer gave you nothing but an obnoxious falling animation.
+			[wait time="0.5"]
+			Red: YOU TAKE THAT BACK! LET ME TURN AROUND, FOR THE LOVE OF MY FRAGILE MASCULINITY, I NEED TO BEAT HIM UP!
 	leave Red
 	[clear time="1.0"]
 	- Done vibing to music
@@ -10,7 +30,7 @@ if {red_first} == true:
 		[end_timeline]
 else:
 join Red left [animation="Instant In"]
-Red: Back to admire my music?
+Red: Back to admire my music? Or is it my good looks?
 [clear time="1.0"]
 - Done vibing
 [end_timeline]
