@@ -1,0 +1,141 @@
+[gd_scene load_steps=18 format=3 uid="uid://bte77ck8t2yt1"]
+
+[ext_resource type="Script" path="res://blue.gd" id="1_cmgx4"]
+[ext_resource type="Texture2D" uid="uid://ce5cn44nd13rw" path="res://Art/Characters/Blue/Blue Spritesheet Base.png" id="1_y20a3"]
+
+[sub_resource type="Animation" id="Animation_exeh6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+
+[sub_resource type="Animation" id="Animation_5w4vc"]
+resource_name = "Idle"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [15, 13, 15, 12, 14]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_65rn2"]
+_data = {
+"Idle": SubResource("Animation_5w4vc"),
+"RESET": SubResource("Animation_exeh6")
+}
+
+[sub_resource type="Curve" id="Curve_owx87"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0.0238806, 140.023), 0.0, 0.0, 0, 0, Vector2(0.226866, 151.022), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1isih"]
+curve = SubResource("Curve_owx87")
+
+[sub_resource type="Curve" id="Curve_mdry8"]
+max_value = 10.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 3.50764), 14.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4uv68"]
+curve = SubResource("Curve_mdry8")
+
+[sub_resource type="Curve" id="Curve_50q4c"]
+min_value = -15.0
+max_value = 0.0
+_data = [Vector2(0.358209, 0), 0.0, 0.0, 0, 0, Vector2(1, -15), 21.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_dkix0"]
+curve_y = SubResource("Curve_50q4c")
+
+[sub_resource type="Curve" id="Curve_ms4s3"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yrg1f"]
+curve = SubResource("Curve_ms4s3")
+
+[sub_resource type="Curve" id="Curve_md78t"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.99999, 3), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mul38"]
+curve = SubResource("Curve_md78t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tk6hq"]
+lifetime_randomness = 0.7
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(10, 2, 1)
+direction = Vector3(0, -0.005, 0)
+spread = 120.0
+flatness = 1.0
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+angular_velocity_curve = SubResource("CurveTexture_1isih")
+directional_velocity_min = 1.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_dkix0")
+gravity = Vector3(0, -10, 0)
+radial_accel_curve = SubResource("CurveTexture_yrg1f")
+damping_min = 24.478
+damping_max = 60.0
+damping_curve = SubResource("CurveTexture_4uv68")
+scale_over_velocity_curve = SubResource("CurveTexture_mul38")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pp2jv"]
+size = Vector2(20, 22)
+
+[node name="Blue" type="CharacterBody2D"]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_cmgx4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+rotation = -3.14159
+scale = Vector2(1, -1)
+texture = ExtResource("1_y20a3")
+hframes = 6
+vframes = 4
+frame = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_65rn2")
+}
+
+[node name="Dust" type="GPUParticles2D" parent="."]
+modulate = Color(0.811765, 0.811765, 0.811765, 0.745098)
+z_index = -1
+position = Vector2(0, 12)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_tk6hq")
+one_shot = true
+explosiveness = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pp2jv")

@@ -1,0 +1,16 @@
+if {red_first} == true:
+	join Red left [animation="Slide In Down" length="1.5"]
+	[wait time="1.0"]
+	Red: I'm Red!
+	Red: I act before I think! I'm flashy and my theme is a little aggressive. My visual design and my song let you know I'm a fighter. My dialogue does too because I'm direct and in your face, ya nerd!
+	leave Red
+	[clear time="1.0"]
+	- Done vibing to music
+		set {red_first} = false
+		[end_timeline]
+else:
+join Red left [animation="Instant In"]
+Red: Back to admire my music?
+[clear time="1.0"]
+- Done vibing
+[end_timeline]
