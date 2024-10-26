@@ -16,13 +16,12 @@ extends Node2D
 
 func ready():
 	await get_tree().create_timer(1.0).timeout
-	Dialogic.signal_event.connect(_on_dialogic_signal)
 	
 	
 func _process(_delta):
-	pass
-	#if start == true:
-		#ost()
+	if talking == true:
+		var reset_tween = get_tree().create_tween()
+		reset_tween.tween_property($"Reset UI/Reset","modulate:a", 0, 1)
 	
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -35,6 +34,17 @@ func _input(event):
 		yellow_event()
 	if event.is_action_pressed("interact") and $"Grey Sign".grey_interact == true and talking == false:
 		grey_event()
+	if event.is_action_pressed("restart") and talking == false:
+		var squirrels = get_tree().get_nodes_in_group("to_delete")
+		for s in squirrels:
+			s.queue_free()
+		get_tree().reload_current_scene()
+		Dialogic.VAR.red_first = true
+		Dialogic.VAR.yellow_first = true
+		Dialogic.VAR.blue_first = true
+		Dialogic.VAR.grey_first = true
+		Dialogic.VAR.yellow_secret = false
+		Dialogic.VAR.red_secret = false
 
 func red_event():
 	$"Red Sign".talking()
@@ -55,6 +65,7 @@ func red_event():
 	red_spawn = true
 	
 func blue_event():
+	Dialogic.signal_event.connect(_on_dialogic_signal)
 	$"Blue Sign".talking()
 	$Blue2/Sprite2D.scale.x = 1
 	talking = true
@@ -78,11 +89,11 @@ func yellow_event():
 	if yellow_spawn == false:
 		var yellow = yellow_scene.instantiate()
 		get_parent().add_child(yellow)
-		yellow.position.x = $"CAT!".global_position.x + 150
+		yellow.position.x = $"CAT!".global_position.x + 170
 		yellow.position.y = $"CAT!".global_position.y
 		#yellow.position += ($"CAT!".global_position - yellow.position).normalized()
 		#yellow_tween.tween_property(yellow,"position", $"CAT!".global_position + Vector2(40,0), 4)
-		await get_tree().create_timer(3.7).timeout
+		await get_tree().create_timer(4).timeout
 		yellow.done_spawning()
 	Dialogic.start("Yellow")
 	yellow_spawn = true
@@ -131,6 +142,8 @@ func done_talking():
 	$Grey.stop()
 	talking = false
 	ost()
+	var reset_tween = get_tree().create_tween()
+	reset_tween.tween_property($"Reset UI/Reset","modulate:a", 1, 1)
 	
 func ost():
 	default_tween = get_tree().create_tween()
@@ -140,12 +153,17 @@ func ost():
 
 
 func _on_dialogic_signal(argument:String):
-	print("string read")
 	if argument == "redfall":
+		red_tween = get_tree().create_tween()
+		red_tween.tween_property($Blue,"volume_db", -60, 1)
+		$Red.play()
+		$Red.volume_db = -60
+		red_tween.tween_property($Red,"volume_db", 0, 1)
 		var red = red_scene.instantiate()
 		get_parent().add_child(red)
 		red.position.x = $"CAT!".global_position.x - 40
 		red.position.y = $"CAT!".global_position.y - 320
+		red.fall_bad()
 		await get_tree().create_timer(4).timeout
 		red_spawn = true
 		

@@ -7,20 +7,93 @@ if {blue_first} == true:
 	Blue: ...
 	Blue: I dropped my ice cream cone earlier...
 	if {red_first} == true and {yellow_first} == false and {grey_first} == false:
+		[wait time="1.0"]
 		Blue: I saw you talk to everyone else first. You haven't even looked for Red.
-		Blue: He's up in a tree. He was planning on jumping when everyone started looking around for him, but that was a while ago.
-		Blue: Between you and me, I think he's just trying to get Grey's approval. It's a salacious rumor, but they say Grey's Red's father.
-		Blue: My life's sad and all, but I wouldn't trade it out if I had to have Grey as my dad. I heard he sniffs cow butts.
+		Blue: He's up in a tree. He was planning on jumping - to make a big entrance you know. Now he missed his chance to look cool.
+		Blue: Between you and me, I think he's just trying to get Grey's approval. It's a salacious rumor, but I bet Grey is Red's father.
+		Blue: My life's sad and all, but I wouldn't trade it out if it meant having Grey as my dad. I heard he sniffs cow butts.
 		[wait time="1.0"]
 		join Grey right
-		Grey: I told you that in confidence! We had a moment, Blue. Did that mean nothing?!
+		update Grey [animation="Tada"]
+		Grey: Who told you that?!
 		[wait time="1.0"]
 		join Yellow center
-		Yellow: YOOOO, Grey sniffs cow butts? No. Way.
-		Yellow: Hey Red! You gotta hear this hot goss on Grey. Dude likes to smell cow farts!
+		update Yellow [animation="Tada"]
+		Yellow: YOOOO, Grey sniffs cow butts? Whaaaaaat?
+		[wait time="0.5"]
+		Yellow: Hey Red! Get down here! You gotta hear this hot goss on Grey. Dude likes to smell cow farts!
 		set {red_first} = false
+		[clear time="0.1" step="false" positions="false" style="false"]
+		[wait time="2.0"]
+		Red: Ahhhhhhhh!
 		[signal arg="redfall"]
-	leave Blue [animation="Fade Out"]
+		[wait time="6.0"]
+		join Red (Red Fall) left [animation="Slide In Down" length="1.0" wait="true"]
+		Red: Ow... My cool landing...
+		join Blue rightmost
+		join Grey right
+		join Yellow center
+		[wait time="1.0"]
+		Red (Red): Is it true? Cow butts? Have I been idolizing a butt-stuffer?!
+		[wait time="1.0"]
+		update Grey [animation="Bounce"]
+		Grey: OF COURSE NOT.
+		[wait time="2.0"]
+		Grey: .
+		Grey: .
+		Grey: .
+		update Grey [animation="Tada"]
+		Grey: Yes, fine, okay. You caught me. I enjoy a good beef rump, are you happy?!
+		[wait time="0.5"]
+		update Red [animation="Tada"]
+		Red: Ew, no! Why would that make me happy?!
+		[wait time="0.5"]
+		update Yellow [animation="Tada"]
+		Yellow: I've literally never been happier. This is great.
+		[wait time="0.5"]
+		update Blue [animation="Tada"]
+		Blue: I've never been happy.
+		[wait time="0.5"]
+		update Grey [animation="Tada"]
+		Grey: I'm going to burn down this forest and everyone in it.
+		leave Grey
+		[wait time="1.0"]
+		update Red [animation="Tada"]
+		Red: I didn't like any part of that sentence.
+		Red: I guess I need to go find someone else to dump my misguided affection on.
+		leave Red
+		update Blue [animation="Tada"]
+		Blue: I'll go pack my stuff...
+		leave Blue
+		update Yellow [animation="Tada"]
+		Yellow: Don't worry, he makes threats like this all the time.\
+I think he's too lonely to actually hurt us.
+		leave Yellow
+		[wait time="1.0"]
+		join Yellow center
+		Yellow: BYE BUTT-STUFFER!
+		leave Yellow
+		set {red_secret} = true
+		[end_timeline]
+	if {grey_first} == false and {red_first} and {yellow_first} == true:
+		[wait time="1.0"]
+		join Grey right [animation="Fade In" wait="true"]
+		update Grey [animation="Tada"]
+		Grey: Hmm... Blue, your friends aren't around. Did something happen?
+		update Blue [animation="Tada"]
+		[wait time="1.0"]
+		Blue: Oh, hi Grey. They're around somewhere, waiting for the Player.
+		[wait time="1.0"]
+		Blue: I'm pretty sure the Player is a weirdo though. I think they're talking to us at random or something.
+		[wait time="1.0"]
+		Blue: We had these stock scripts, but they get all messed up when we get unpredictable Players.
+		update Grey [animation="Tada"]
+		Grey: Ah. That makes sense. Leave it to the Player to ruin a curated experience by doing things out of order.
+		[wait time="2.0"]
+		Grey: By the way, in my script, it says I'm supposed to tell you that I sniff cow butts.
+		Grey: I hope there isn't an alternate timeline or something where you tell everyone and embarrass me.
+		update Blue [animation="Tada"]
+		Blue: Weird flex, but okay. Your secret's safe with me in this timeline.
 else:
 	join Blue rightmost [animation="Fade In"]
 	Blue: You want to listen to my song again?

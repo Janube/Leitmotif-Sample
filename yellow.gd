@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 func _ready():
 	$Sprite2D.scale.x = -1
-
+	add_to_group("to_delete")
 	
 func _physics_process(delta):
 

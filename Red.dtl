@@ -5,32 +5,54 @@ if {red_first} == true:
 	Red: I act before I think! I'm flashy and my theme is a little aggressive.
 	Red: My visual design and my song let you know I'm a fighter. My dialogue does too because I'm direct and in your face, ya nerd!
 	if {blue_first} == false:
+		[wait time="1.5"]
 		Red: Hold up, did you seriously go see Blue before me?\
 \
-BLUE?
+BLUE? WHAT DOES HE HAVE THAT I DON'T?!
 		[wait time="1.0"]
 		join Blue rightmost
-		Blue: Sorry, Red. I think I unlocked some kind of eldritch pity magic. 
+		update Blue [animation="Tada"]
+		Blue: Sorry, Red. I think I accidentally used some kind of eldritch pity magic.
 		if {grey_first} == false:
-			Blue: Even Grey came over and asked me if I was doing okay. It was nice of him.
-			[wait time="1.0"]
-			Red: HOLD UP. You saw GREY before me?!\
+			Blue: Even Grey came over to check on me. \
 \
-I'll kill him!
+It was nice of him.
+			[wait time="1.0"]
+			update Red [animation="Tada"]
+			Red: HOLD UP. You saw Grey before me?
+			Red: Did... Did he say anything about me?
 			[wait time="1.0"]
 			join Grey right
-			Grey: Sure you will, bud. Don't think I haven't seen you practicing that superhero landing all day. 
-			Grey: I bet you couldn't even turn around right now. I bet some lazy-ass programmer gave you nothing but an obnoxious falling animation.
+			update Grey [animation="Tada"]
+			Grey: No, but I should have said that superhero landing you've been practicing all day is lame.
+			update Red [animation="Tada"]
+			Red: MY SUPERHERO LANDING IS RAD. DON'T MAKE ME COME OVER THERE!
+			update Grey [animation="Tada"]
+			Grey: Try it.\
+\
+I bet you couldn't even turn around right now. I bet some lazy-ass programmer only gave you an obnoxious falling animation.
 			[wait time="0.5"]
-			Red: YOU TAKE THAT BACK! LET ME TURN AROUND, FOR THE LOVE OF MY FRAGILE MASCULINITY, I NEED TO BEAT HIM UP!
+			update Red [animation="Bounce"]
+			Red: YOU TAKE THAT BACK! LET ME TURN AROUND, I NEED TO BEAT HIM UP!
+			set {yellow_secret} = true
 	leave Red
 	[clear time="1.0"]
 	- Done vibing to music
 		set {red_first} = false
 		[end_timeline]
 else:
-join Red left [animation="Instant In"]
-Red: Back to admire my music? Or is it my good looks?
+if {red_secret} == false and {red_first} == false:
+	join Red left [animation="Instant In"]
+	Red: Back to admire my music? Or is it my good looks?
+elif {red_secret} == true:
+	join Red left
+	Red: I can't believe I looked up to him...\
+\
+Butt sniffing? This whole time?
+	[wait time="1.0"]
+	Red: *sigh*\
+\
+I think I understand what Blue is going through now.
 [clear time="1.0"]
 - Done vibing
 [end_timeline]

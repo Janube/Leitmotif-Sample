@@ -38,8 +38,9 @@ func pick_new_state():
 		state_machine.travel("idle")
 
 func dialogue():
-	Dialogic.timeline_ended.connect(_on_timeline_ended)
 	set_physics_process(false)
+	Dialogic.timeline_ended.connect(_on_timeline_ended)
+	
 
 func _on_timeline_ended():
 	Dialogic.timeline_ended.disconnect(_on_timeline_ended)

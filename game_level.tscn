@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dfjqaakl3xngk"]
+[gd_scene load_steps=25 format=4 uid="uid://dfjqaakl3xngk"]
 
 [ext_resource type="Script" path="res://game_level.gd" id="1_jwnq4"]
 [ext_resource type="PackedScene" uid="uid://cuede48rui6j2" path="res://cat!.tscn" id="1_lk5ld"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bte77ck8t2yt1" path="res://blue.tscn" id="11_pdbk6"]
 [ext_resource type="AudioStream" uid="uid://bmw6k3doh2bbs" path="res://Art/music/Yellow.ogg" id="15_mqwj2"]
 [ext_resource type="AudioStream" uid="uid://b6bp2i1cx6jf2" path="res://Art/music/Grey.ogg" id="16_q0gd8"]
+[ext_resource type="PackedScene" uid="uid://bxglsrutpc8g0" path="res://reset_ui.tscn" id="17_ysnak"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q00qy"]
 texture = ExtResource("2_ogeie")
@@ -757,9 +758,13 @@ stream = ExtResource("10_8qjf5")
 
 [node name="Yellow" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_mqwj2")
+parameters/looping = true
 
 [node name="Grey" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_q0gd8")
+parameters/looping = true
+
+[node name="Reset UI" parent="." instance=ExtResource("17_ysnak")]
 
 [connection signal="body_entered" from="Grey Sign/Hitbox" to="Grey Sign" method="_on_hitbox_body_entered"]
 [connection signal="body_exited" from="Grey Sign/Hitbox" to="Grey Sign" method="_on_hitbox_body_exited"]

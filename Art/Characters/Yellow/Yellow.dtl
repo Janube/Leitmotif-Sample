@@ -2,18 +2,62 @@ if {yellow_first} == true:
 	join Yellow center [animation="Slide In Right" length="2.0"]
 	[wait time="1.3"]
 	Yellow: Hey! I'm Yellow!
-	if {blue_first} and {red_first} == false:
+	if {blue_first} == false and {red_first} == false and {yellow_secret} == false:
 		Yellow: Don't mind those two. Red's a bit intense, and Blue's stuck in his own head. But that's just what makes them who they are, y'know?
 		Yellow: My song's optimistic and energetic. But it's not aggressive! I'm all about being cheery and outgoing!
 		Yellow: Not everyone can be like *Grey*. That guy's a real wangus. You'll know when you meet him.
-	else:
-		Yellow: Wait, did you come see me before Red and Blue? That's so nice! You must really like me.
-		Yellow: But just so you know, I'm spoken for. I'm dating Grey's daughter. Heh.
+	if {blue_first} or {red_first} == true and {yellow_secret} == false:
+		Yellow: Wait, did you come see me before Red or Blue? That's so nice! You must really like me.
+		Yellow: But just so you know, I'm spoken for. I'm dating Grey's daughter. \
+\
+Heh.
 		if {grey_first} == false:
-			join Grey right
+			join Grey right [animation="Fade In" wait="true"]
+			update Grey [animation="Bounce"]
 			Grey: YOU WHAT.
 			[wait time="1.0"]
+			update Yellow [animation="Tada"]
 			Yellow: Heh.
+	if {yellow_secret} == true:
+		[wait time="1.0"]
+		Yellow: What's all the commotion?
+		join Blue rightmost
+		Blue: Grey is picking a fight with Red.
+		join Grey right
+		Grey: Won't be much of a fight if Red can't even turn to the right.
+		join Red left
+		update Red [animation="Bounce"]
+		Red: COME STAND TWO FEET TO MY LEFT AND SAY THAT.
+		[wait time="1.0"]
+		update Yellow [animation="Tada"]
+		Yellow: I bet that sounded more intimidating in your head.
+		update Red [animation="Tada"]
+		Red: It wasn't my best threat.
+		[wait time="1.0"]
+		update Blue [animation="Tada"]
+		Blue: I'd give it a 3.
+		update Red [animation="Tada"]
+		Red: Et tu, Blue?
+		leave Red
+		leave Blue
+		leave Grey
+		[wait time="1.0"]
+		Yellow: I don't want him to know, but I'd put a massive bet on Grey in that fight.
+		join Grey right [animation="Fade In" length="6.0" wait="true"]
+		update Grey [animation="Tada"]
+		Grey: Heh.
+		leave Grey [animation="Fade Out"]
+		update Yellow [animation="Tada"]
+		Yellow: NO! YOU WEREN'T SUPPOSED TO HEAR THAT!\
+\
+I WAS JOKING, GREY. YOU'D LOSE IN A LANDSLIDE!
+		[wait time="1.0"]
+		Yellow: GREY!\
+\
+SERIOUSLY, I THINK YOU'VE GOT THE ARMS OF A KITTEN!
+		leave Yellow
+		[wait time="1.0"]
+		Yellow: WIPE THAT SMUG LOOK OFF YOUR FACE, GREY.
 else:
 	join Yellow center [animation="Fade In"]
 	Yellow: Oh hey, you're back! How're you doin, buddy?

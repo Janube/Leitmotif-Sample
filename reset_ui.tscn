@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxglsrutpc8g0"]
+
+[ext_resource type="FontFile" uid="uid://ln0sojfgs14i" path="res://Art/music/Chaloops-Regular.ttf" id="1_t2ngi"]
+[ext_resource type="Script" path="res://reset.gd" id="2_0lo2l"]
+
+[node name="Reset UI" type="CanvasLayer"]
+
+[node name="Reset" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -83.0
+offset_top = 10.0
+offset_right = 83.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_t2ngi")
+theme_override_font_sizes/font_size = 12
+text = "Press 'R' to Reset"
+horizontal_alignment = 1
+script = ExtResource("2_0lo2l")

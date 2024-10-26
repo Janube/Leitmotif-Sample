@@ -5,17 +5,28 @@ if {grey_first} == true:
 	Grey: I'm sure you can tell how sinister I am. No one who wears an eyepatch is innocent.
 	Grey: My scowl, chain-smoking, and ominous song let you know I'm a threat.
 	Grey: But don't worry. You can tell I don't pose any immediate danger to you because my theme is slow and uncomfortable, not action-packed.
+	if {blue_first} == false and {red_first} == false and {yellow_first} == false:
+		[wait time="1.0"]
+		Grey: By the way, you didn't hear it from me, but...
+		Grey: I bet there's a lot of hidden dialogue if you switch up who you talk to first.\
+\
+Try resetting and talking to me first. Just a hunch.
+	if {blue_first} == true and {red_first} == true and {yellow_first} == true:
+		[wait time="1.0"]
+		Grey: Blue looks pretty sad. If Yellow doesn't show up soon, maybe I'll go talk to him.
 else:
 	join Grey right [animation="Fade In"]
 	Grey: Back again? You'll probably spot me slinking around, getting in your way indirectly. Or maybe you won't see me at all... until it's too late.
 	if {yellow_first} == false:
 		[wait time="1.0"]
-		join Yellow center [animation="Bounce In"]
+		join Yellow center [animation="Bounce In" wait="true"]
+		update Yellow [animation="Tada"]
 		Yellow: YOU'VE BEEN HIDING IN THAT BUSH FOR HOURS. WE'VE SEEN YOU ALL DAY. \
 \
 GET A HOBBY, YA WANGUS.
 		leave Yellow
 		[wait time="1.0"]
+		update Grey [animation="Tada"]
 		Grey: See, this is why I'm evil.
 	else:
 		[wait time="1.0"]
