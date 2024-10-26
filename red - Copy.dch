@@ -1,0 +1,56 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(1, 1, 1, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": ""
+},
+"default_portrait": "Red",
+"description": "",
+"display_name": "Red",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(0, -90),
+"portraits": {
+"Blue": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Grey": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Red": {
+"export_overrides": {
+"image": "\"res://Art/Characters/Red/Red Portrait.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"Yellow": {
+"export_overrides": {
+"image": ""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+"scale": 0.3
+}
