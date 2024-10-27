@@ -13,7 +13,7 @@ if {grey_first} == true:
 Try resetting and talking to me first. Just a hunch.
 	if {blue_first} == true and {red_first} == true and {yellow_first} == true:
 		[wait time="1.0"]
-		Grey: Blue looks pretty sad. If Yellow doesn't show up soon, maybe I'll go talk to him.
+		Grey: Blue looks dumpier than usual. If Yellow doesn't show up soon, maybe I'll go talk to him.
 else:
 	join Grey right [animation="Fade In"]
 	Grey: Back again? You'll probably spot me slinking around, getting in your way indirectly. Or maybe you won't see me at all... until it's too late.

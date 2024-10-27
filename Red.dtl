@@ -19,7 +19,7 @@ BLUE? WHAT DOES HE HAVE THAT I DON'T?!
 It was nice of him.
 			[wait time="1.0"]
 			update Red [animation="Tada"]
-			Red: HOLD UP. You saw Grey before me?
+			Red: You saw Grey before me too?!
 			Red: Did... Did he say anything about me?
 			[wait time="1.0"]
 			join Grey right
@@ -27,6 +27,7 @@ It was nice of him.
 			Grey: No, but I should have said that superhero landing you've been practicing all day is lame.
 			update Red [animation="Tada"]
 			Red: MY SUPERHERO LANDING IS RAD. DON'T MAKE ME COME OVER THERE!
+			[wait time="0.5"]
 			update Grey [animation="Tada"]
 			Grey: Try it.\
 \

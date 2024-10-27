@@ -23,6 +23,7 @@ Heh.
 		Yellow: What's all the commotion?
 		join Blue rightmost
 		Blue: Grey is picking a fight with Red.
+		[wait time="1.0"]
 		join Grey right
 		Grey: Won't be much of a fight if Red can't even turn to the right.
 		join Red left
@@ -42,7 +43,7 @@ Heh.
 		leave Blue
 		leave Grey
 		[wait time="1.0"]
-		Yellow: I don't want him to know, but I'd put a massive bet on Grey in that fight.
+		Yellow: Between you and me, I'd put a massive bet on Grey in that fight.
 		join Grey right [animation="Fade In" length="6.0" wait="true"]
 		update Grey [animation="Tada"]
 		Grey: Heh.
