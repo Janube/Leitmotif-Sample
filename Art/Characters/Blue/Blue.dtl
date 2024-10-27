@@ -93,7 +93,7 @@ I think he's too lonely to actually hurt us.
 		update Blue [animation="Tada"]
 		Blue: Oh, hi Grey. They're around somewhere, just waiting for the Player.
 		[wait time="1.0"]
-		Blue: We have these scripts, but they get all messed up when we get unpredictable Players.\
+		Blue: We have these scripts, but they get all messed up with unpredictable Players.\
 \
 It's a bummer.
 		[wait time="0.5"]
